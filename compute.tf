@@ -23,7 +23,7 @@ data "template_cloudinit_config" "cloud_init" {
 
 resource "oci_core_instance" "bastion_instance" {
   count               = var.deploy_bastion_instance ? 1 : 0
-  availability_domain = var.availability_domain_name
+  availability_domain = local.availability_domain_name
   compartment_id      = var.compartment_ocid
   display_name        = "BastionVM"
   shape               = var.InstanceShape
@@ -60,7 +60,7 @@ resource "oci_core_instance" "bastion_instance" {
 
 resource "oci_core_instance" "spoke01_test_instance" {
   count               = var.deploy_spoke01_instance ? 1 : 0
-  availability_domain = var.availability_domain_name
+  availability_domain = local.availability_domain_name
   compartment_id      = var.compartment_ocid
   display_name        = "spoke01_test_instance"
   shape               = var.InstanceShapeSpoke01
@@ -95,7 +95,7 @@ resource "oci_core_instance" "spoke01_test_instance" {
 
 resource "oci_core_instance" "spoke02_test_instance" {
   count               = var.deploy_spoke01_instance ? 1 : 0
-  availability_domain = var.availability_domain_name
+  availability_domain = local.availability_domain_name
   compartment_id      = var.compartment_ocid
   display_name        = "spoke02_test_instance"
   shape               = var.InstanceShapeSpoke02

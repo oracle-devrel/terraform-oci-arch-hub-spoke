@@ -7,11 +7,30 @@ variable "region" {}
 variable "fingerprint" {}
 variable "user_ocid" {}
 variable "private_key_path" {}
-variable "availability_domain_name" {}
+
+variable "availability_domain_number" {
+  default = 0
+}
+
+variable "availability_domain_name" {
+  default = ""
+}
 
 variable "release" {
   description = "Reference Architecture Release (OCI Architecture Center)"
-  default     = "1.1.1"
+  default     = "1.1.2"
+}
+
+variable "create_hub_drg" {
+  default = true
+}
+
+variable "hub_drg_display_name" {
+  default = "hub_drg"
+}
+
+variable "hub_drg_attachment_display_name" {
+  default = "hub_drg_attachment"
 }
 
 variable "igw_display_name" {
@@ -148,4 +167,5 @@ locals {
   is_flexible_node_shape         = contains(local.compute_flexible_shapes, var.InstanceShape)
   is_flexible_node_shape_spoke01 = contains(local.compute_flexible_shapes, var.InstanceShapeSpoke01)
   is_flexible_node_shape_spoke02 = contains(local.compute_flexible_shapes, var.InstanceShapeSpoke02)
+  availability_domain_name       = var.availability_domain_name == "" ? lookup(data.oci_identity_availability_domains.ADs.availability_domains[var.availability_domain_number], "name") : var.availability_domain_name
 }
