@@ -9,6 +9,20 @@ resource "oci_core_vcn" "hub" {
   defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
+resource "oci_core_drg" "hub_drg" {
+  count          = var.create_hub_drg ? 1 : 0
+  compartment_id = var.compartment_ocid
+  display_name   = var.hub_drg_display_name
+  defined_tags   = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
+}
+
+resource "oci_core_drg_attachment" "hub_drg_attachment" {
+  count        = var.create_hub_drg ? 1 : 0
+  drg_id       = oci_core_drg.hub_drg[0].id
+  vcn_id       = oci_core_vcn.hub.id
+  display_name = var.hub_drg_attachment_display_name
+}
+
 #IGW
 resource "oci_core_internet_gateway" "hub_internet_gateway" {
   compartment_id = var.compartment_ocid

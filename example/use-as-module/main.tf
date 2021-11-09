@@ -7,7 +7,6 @@ variable "user_ocid" {}
 variable "tenancy_ocid" {}
 variable "compartment_ocid" {}
 variable "private_key_path" {}
-variable "availability_domain_name" {}
 
 provider "oci" {
   tenancy_ocid     = var.tenancy_ocid
@@ -26,7 +25,6 @@ module "hub-spoke" {
   region                           = var.region
   private_key_path                 = var.private_key_path
   compartment_ocid                 = var.compartment_ocid
-  availability_domain_name         = var.availability_domain_name
   deploy_bastion_instance          = false # no bastion host in HUB VCN
   hub_vcn_cidr_block               = "192.168.0.0/16"
   hub_subnet_pub01_cidr_block      = "192.168.1.0/24"

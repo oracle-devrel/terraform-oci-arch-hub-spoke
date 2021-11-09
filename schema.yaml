@@ -1,8 +1,8 @@
-## Copyright © 2020, Oracle and/or its affiliates. 
+## Copyright © 2021, Oracle and/or its affiliates. 
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
-    title: "Create a HUB-spoke network in Oracle Cloud Infrastructure"
-    stackDescription: Deploy a HUB-spoke network in Oracle Cloud Infrastructure
+    title: "Create a HUB-Spoke network in Oracle Cloud Infrastructure"
+    stackDescription: Deploy a HUB-Spoke network in Oracle Cloud Infrastructure
     schemaVersion: 1.1.0
     version: "20190404"
     locale: "en"
@@ -16,12 +16,13 @@
       - instance_os
       - release
       - deploy_bastion_instance
+      - availability_domain_number
 
     - title: Required Configuration
       visible: true  
       variables:  
       - compartment_ocid
-      - availablity_domain_name 
+      - availability_domain_name 
       - show_advanced  
 
     - title: Networking Optional Configuration
@@ -35,6 +36,9 @@
       - hub_vcn_dns_label
       - hub_subnet_pub01_display_name
       - hub_subnet_pub01_cidr_block
+      - create_hub_drg
+      - hub_drg_display_name
+      - hub_drg_attachment_display_name
       - spoke01_vcn_display_name
       - spoke01_vcn_cidr_block
       - spoke01_vcn_dns_label
@@ -87,7 +91,7 @@
         title: Region
         description: Region where you want to deploy the resources defined by this stack
 
-      availablity_domain_name:
+      availability_domain_name:
         type: oci:identity:availabilitydomain:name
         required: true
         visible: true
@@ -132,6 +136,31 @@
         required: true
         title: Public Subnet Display Name  
         description: Display name assigned to the Public subnet in the HUB VCN
+
+      create_hub_drg:
+        type: boolean
+        required: false
+        title: Create DRG for HUB VCN
+        description: Check if you want to create Dynamic Routing Gateway (DRG) for HUB VCN.
+        default: true        
+
+      hub_drg_display_name:
+        type: string
+        required: false
+        title: HUB DRG Display Name
+        description: Display name assigned to HUB VCN DRG
+        visible:
+          and:
+            - create_hub_drg
+
+      hub_drg_attachment_display_name:
+        type: string
+        required: false
+        title: HUB DRG Attachment Display Name
+        description: Display name assigned to HUB VCN DRG Attacjment
+        visible:
+          and:
+            - create_hub_drg
 
       spoke01_vcn_cidr_block:
         type: string

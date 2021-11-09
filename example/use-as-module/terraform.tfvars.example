@@ -10,5 +10,3 @@ region = "<region>"
 # Compartment
 compartment_ocid = "<compartment_ocid>"
 
-# Availablity Domain 
-availability_domain_name = "<availability_domain_name>"
