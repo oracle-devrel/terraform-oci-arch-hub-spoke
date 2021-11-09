@@ -7,7 +7,7 @@ variable "region" {}
 #variable "fingerprint" {}
 #variable "user_ocid" {}
 #variable "private_key_path" {}
-variable "availablity_domain_name" {}
+variable "availability_domain_name" {}
 
 variable "release" {
   description = "Reference Architecture Release (OCI Architecture Center)"
@@ -97,6 +97,10 @@ variable "InstanceFlexShapeMemory" {
 
 variable "ssh_public_key" {
   default = ""
+}
+
+variable "deploy_bastion_instance" {
+  default = true
 }
 
 variable "deploy_spoke01_instance" {
