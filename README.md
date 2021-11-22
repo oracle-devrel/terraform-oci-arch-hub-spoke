@@ -95,6 +95,14 @@ module "oci-hub-spoke" {
 ## Contributing
 This project is open source.  Please submit your contributions by forking this repository and submitting a pull request!  Oracle appreciates any contributions that are made by the open source community.
 
+### Attribution & Credits
+Initially, this project was created and distributed in [GitHub Oracle QuickStart space](https://github.com/oracle-quickstart/oci-arch-hub-spoke). For that reason, we would like to thank all the involved contributors enlisted below:
+- Orlando Gentil (https://github.com/oegentil)
+- Kumar Dhanagopal (https://github.com/kumar-dhanagopal)
+- Lukasz Feldman (https://github.com/lfeldman)
+- Ben Lackey (https://github.com/benofben)
+- Flavio Pereira (https://github.com/flavio-santino)
+
 ## License
 Copyright (c) 2021 Oracle and/or its affiliates.
 
