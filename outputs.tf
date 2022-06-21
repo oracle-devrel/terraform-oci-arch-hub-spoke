@@ -1,8 +1,16 @@
-## Copyright (c) 2021, Oracle and/or its affiliates.
+## Copyright (c) 2022, Oracle and/or its affiliates.
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 output "bastion_public_ip" {
   value = oci_core_instance.bastion_instance.*.public_ip
+}
+
+output "spoke01_test_instance_private_ip" {
+  value = oci_core_instance.spoke01_test_instance.*.private_ip
+}
+
+output "spoke02_test_instance_private_ip" {
+  value = oci_core_instance.spoke02_test_instance.*.private_ip
 }
 
 output "vcn_id_hub_id" {

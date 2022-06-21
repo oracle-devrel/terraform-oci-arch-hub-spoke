@@ -1,4 +1,4 @@
-## Copyright (c) 2021, Oracle and/or its affiliates.
+## Copyright (c) 2022, Oracle and/or its affiliates.
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 variable "tenancy_ocid" {}
@@ -18,7 +18,7 @@ variable "availability_domain_name" {
 
 variable "release" {
   description = "Reference Architecture Release (OCI Architecture Center)"
-  default     = "1.1.2"
+  default     = "1.1.3"
 }
 
 variable "create_hub_drg" {
@@ -98,12 +98,11 @@ variable "instance_os" {
 
 variable "linux_os_version" {
   description = "Operating system version for all Linux instances"
-  #  default     = "7.9"
   default = "8"
 }
 
 variable "InstanceShape" {
-  default = "VM.Standard.E3.Flex"
+  default = "VM.Standard.A1.Flex"
 }
 
 variable "InstanceFlexShapeOCPUS" {
@@ -127,7 +126,7 @@ variable "deploy_spoke01_instance" {
 }
 
 variable "InstanceShapeSpoke01" {
-  default = "VM.Standard.E3.Flex"
+  default = "VM.Standard.A1.Flex"
 }
 
 variable "InstanceFlexShapeOCPUSSpoke01" {
@@ -135,7 +134,7 @@ variable "InstanceFlexShapeOCPUSSpoke01" {
 }
 
 variable "InstanceFlexShapeMemorySpoke01" {
-  default = 10
+  default = 1
 }
 
 variable "deploy_spoke02_instance" {
@@ -143,7 +142,7 @@ variable "deploy_spoke02_instance" {
 }
 
 variable "InstanceShapeSpoke02" {
-  default = "VM.Standard.E3.Flex"
+  default = "VM.Standard.A1.Flex"
 }
 
 variable "InstanceFlexShapeOCPUSSpoke02" {
@@ -151,14 +150,15 @@ variable "InstanceFlexShapeOCPUSSpoke02" {
 }
 
 variable "InstanceFlexShapeMemorySpoke02" {
-  default = 10
+  default = 1
 }
 
 # Dictionary Locals
 locals {
   compute_flexible_shapes = [
     "VM.Standard.E3.Flex",
-    "VM.Standard.E4.Flex"
+    "VM.Standard.E4.Flex",
+    "VM.Standard.A1.Flex"
   ]
 }
 

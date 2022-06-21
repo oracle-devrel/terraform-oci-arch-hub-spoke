@@ -233,7 +233,7 @@
         required: false
         title: "Bastion Instance Shape"
         description: A shape is a template that determines the number of CPUs, amount of memory, and other resources allocated to Bastion instance.
-        default: "VM.Standard.E2.1.Micro"
+        default: "VM.Standard.A1.Flex"
         dependsOn:
           compartmentId: ${compartment_ocid}
 
@@ -255,6 +255,9 @@
               - eq:
                 - InstanceShape 
                 - "VM.Standard.E4.Flex"
+              - eq:
+                - InstanceShape 
+                - "VM.Standard.A1.Flex"
 
       InstanceFlexShapeMemory:
         type: number
@@ -262,7 +265,7 @@
         minimum: 1
         maximum: 128
         multipleOf: 1
-        default: 10
+        default: 1
         title: "Bastion Flex Shape Memory (GB)"
         description: "Choose number GB for Flex Shape Memory."
         visible:
@@ -274,6 +277,9 @@
               - eq:
                 - InstanceShape
                 - "VM.Standard.E4.Flex"
+              - eq:
+                - InstanceShape
+                - "VM.Standard.A1.Flex"
 
       instance_os:
         type: enum
@@ -292,7 +298,6 @@
         default: "8"
         enum:
           - "8"
-          - "7.9"
 
       deploy_spoke01_instance:
         type: boolean
@@ -309,7 +314,7 @@
         required: false
         title: "Spoke01 Instance Shape"
         description: A shape is a template that determines the number of CPUs, amount of memory, and other resources allocated to Bastion instance.
-        default: "VM.Standard.E2.1.Micro"
+        default: "VM.Standard.A1.Flex"
         dependsOn:
           compartmentId: ${compartment_ocid}
 
@@ -333,6 +338,9 @@
                 - eq:
                   - InstanceShapeSpoke01 
                   - "VM.Standard.E4.Flex"
+                - eq:
+                  - InstanceShapeSpoke01 
+                  - "VM.Standard.A1.Flex"
 
       InstanceFlexShapeMemorySpoke01:
         type: number
@@ -340,7 +348,7 @@
         minimum: 1
         maximum: 128
         multipleOf: 1
-        default: 10
+        default: 1
         title: "Spoke01 Flex Shape Memory (GB)"
         description: "Choose number GB for Flex Shape Memory."
         visible:
@@ -354,7 +362,9 @@
                 - eq:
                   - InstanceShapeSpoke01 
                   - "VM.Standard.E4.Flex"
-
+                - eq:
+                  - InstanceShapeSpoke01 
+                  - "VM.Standard.A1.Flex"
 
       deploy_spoke02_instance:
         type: boolean
@@ -371,7 +381,7 @@
         required: false
         title: "Spoke02 Instance Shape"
         description: A shape is a template that determines the number of CPUs, amount of memory, and other resources allocated to Bastion instance.
-        default: "VM.Standard.E2.1.Micro"
+        default: "VM.Standard.A1.Flex"
         dependsOn:
           compartmentId: ${compartment_ocid}
 
@@ -395,6 +405,9 @@
                 - eq:
                   - InstanceShapeSpoke02 
                   - "VM.Standard.E4.Flex"
+                - eq:
+                  - InstanceShapeSpoke02 
+                  - "VM.Standard.A1.Flex"
 
       InstanceFlexShapeMemorySpoke02:
         type: number
@@ -402,7 +415,7 @@
         minimum: 1
         maximum: 128
         multipleOf: 1
-        default: 10
+        default: 1
         title: "Spoke02 Flex Shape Memory (GB)"
         description: "Choose number GB for Flex Shape Memory."
         visible:
@@ -416,7 +429,9 @@
                 - eq:
                   - InstanceShapeSpoke02 
                   - "VM.Standard.E4.Flex"
-
+                - eq:
+                  - InstanceShapeSpoke02 
+                  - "VM.Standard.A1.Flex"
       release:
         type: string
         required: false
