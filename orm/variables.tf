@@ -18,7 +18,7 @@ variable "availability_domain_name" {
 
 variable "release" {
   description = "Reference Architecture Release (OCI Architecture Center)"
-  default     = "1.1.3"
+  default     = "1.1.4"
 }
 
 variable "create_hub_drg" {
@@ -98,7 +98,7 @@ variable "instance_os" {
 
 variable "linux_os_version" {
   description = "Operating system version for all Linux instances"
-  default = "8"
+  default = "9"
 }
 
 variable "InstanceShape" {
